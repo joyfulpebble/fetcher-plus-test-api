@@ -1,0 +1,156 @@
+{
+  "env": {
+    "node": true,
+    "browser": true,
+    "es2022": true,
+    "shared-node-browser": true
+  },
+  "plugins": [
+    "prettier",
+    "import",
+    "@typescript-eslint"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "src/**/*.ts?(x)"
+      ],
+      "extends": [
+        "prettier"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": "./tsconfig.json",
+        "sourceType": "module",
+        "ecmaVersion": 2022,
+        "warnOnUnsupportedTypeScriptVersion": true
+      }
+    }
+  ],
+  "rules": {
+    "array-bracket-spacing": [
+      "warn",
+      "never",
+      {
+        "objectsInArrays": false,
+        "arraysInArrays": false,
+        "singleValue": false
+      }
+    ],
+    "array-callback-return": [
+      "warn",
+      {
+        "allowImplicit": true
+      }
+    ],
+    "arrow-body-style": [
+      "warn",
+      "as-needed",
+      {
+        "requireReturnForObjectLiteral": true
+      }
+    ],
+    "arrow-parens": "warn",
+    "arrow-spacing": [
+      "warn",
+      {
+        "before": true,
+        "after": true
+      }
+    ],
+    "block-spacing": "warn",
+    "brace-style": "error",
+    "comma-dangle": "warn",
+    "comma-spacing": "warn",
+    "for-direction": "error",
+    "func-call-spacing": "warn",
+    "getter-return": [
+      "error",
+      {
+        "allowImplicit": true
+      }
+    ],
+    "key-spacing": [
+      "warn",
+      {
+        "mode": "minimum"
+      }
+    ],
+    "linebreak-style": "warn",
+    "max-len": [
+      "error",
+      {
+        "code": 100
+      }
+    ],
+    "new-parens": "error",
+    "no-async-promise-executor": "error",
+    "no-await-in-loop": "error",
+    "no-class-assign": "error",
+    "no-cond-assign": "error",
+    "no-const-assign": "error",
+    "no-constant-binary-expression": "error",
+    "no-constant-condition": "error",
+    "no-constructor-return": "error",
+    "no-debugger": "warn",
+    "no-dupe-args": "error",
+    "no-dupe-class-members": "warn",
+    "no-dupe-else-if": "warn",
+    "no-dupe-keys": "error",
+    "no-duplicate-case": "error",
+    "no-duplicate-imports": "warn", /* need to watch */
+    "no-empty": "error",
+    "no-empty-pattern": "error",
+    "no-multi-spaces": "warn",
+    "no-setter-return": "error",
+    "no-unused-private-class-members": "warn",
+    "no-unused-vars": [
+      "warn",
+      {
+        "args": "none"
+      }
+    ],
+    "no-use-before-define": [
+      "error",
+      {
+        "classes": true,
+        "functions": false,
+        "variables": false,
+        "allowNamedExports": true
+      }
+    ],
+    "no-var": "error",
+    "no-whitespace-before-property": "error",
+    "prefer-exponentiation-operator": "warn",
+    "quotes": [
+      "warn",
+      "double"
+    ],
+    "require-await": "warn",
+    "semi": [
+      "error",
+      "always"
+    ],
+    "space-before-blocks": "warn",
+    "space-before-function-paren": [
+      "warn",
+      "never"
+    ],
+    "space-infix-ops": "warn",
+    "space-in-parens": "warn",
+    "import/no-amd": "error",
+    "import/no-anonymous-default-export": "warn",
+    "import/no-deprecated": "error",
+    "import/no-mutable-exports": "error",
+    "import/no-commonjs": "warn",
+    "import/named": "warn",
+    "import/consistent-type-specifier-style": [
+      "error",
+      "prefer-top-level"
+    ],
+    "import/exports-last": "warn",
+    "import/first": "error",
+    "import/newline-after-import": "warn",
+    "import/order": "warn"
+  }
+}
