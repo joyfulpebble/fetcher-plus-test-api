@@ -1,12 +1,39 @@
-import { Controller, Get } from "@nestjs/common";
-import { AppService } from "./app.service";
+/* eslint-disable import/order */
+import {
+	Post,
+	Controller,
+	UploadedFile,
+	Request as Req,
+	UseInterceptors,
+	HttpCode
+} from "@nestjs/common";
+import { FileInterceptor } from "@nestjs/platform-express";
 
-@Controller("/app")
+import type { Express, Request } from "express";
+import type { POST } from "./types/post";
+
+@Controller("/post")
 export class AppController {
-	constructor(private appService: AppService) {}
+	@Post("/form-data")
+	@HttpCode(201)
+	@UseInterceptors(FileInterceptor("file"))
+	formData(@UploadedFile() file: Express.Multer.File) /*: POST.FromData */ {
+		return {
+			fildName: file.fieldname,
+			fileName: file.originalname,
+			fileSize: file.size
+		};
+	}
 
-	@Get("/greeting")
-	sayHello(): string {
-		return this.appService.sayHello();
+	@Post("/raw")
+	@HttpCode(201)
+	raw(@Req() req: Request): POST.Raw {
+		const reqBody = req.body;
+		const reqContentType = req.headers["content-type"] || "Content type not found.";
+
+		return {
+			requestContentType: reqContentType,
+			requestBody: reqBody
+		};
 	}
 }
