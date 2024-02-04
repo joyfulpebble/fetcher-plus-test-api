@@ -36,4 +36,14 @@ export class AppController {
 			requestBody: reqBody
 		};
 	}
+
+	@Post("/urlencode")
+	@HttpCode(201)
+	urlencode(@Req() req: Request) /*: POST.Raw*/ {
+		const reqBody = req.body;
+
+		return {
+			requestBody: reqBody
+		};
+	}
 }

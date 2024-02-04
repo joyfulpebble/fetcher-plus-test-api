@@ -16,8 +16,7 @@ import {
 })
 export class AppModule {
 	configure(middlewareConsumer: MiddlewareConsumer): void {
-		const middlewares = [
-			UrlEncodedParserMiddleware,
+		const raw_middlewares = [
 			HtmlParserMiddleware,
 			JavascriptParserMiddleware,
 			JsonParserMiddleware,
@@ -25,8 +24,13 @@ export class AppModule {
 			XmlParserMiddleware
 		];
 
-		middlewareConsumer.apply(...middlewares).forRoutes({
+		middlewareConsumer.apply(...raw_middlewares).forRoutes({
 			path: "/post/raw",
+			method: RequestMethod.POST
+		});
+
+		middlewareConsumer.apply(UrlEncodedParserMiddleware).forRoutes({
+			path: "/post/urlencode",
 			method: RequestMethod.POST
 		});
 	}
